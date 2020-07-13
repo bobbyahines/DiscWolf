@@ -1,0 +1,25 @@
+{
+  "name": "bobbyahines/discwolf",
+  "description": "A Wolf game mode tracker for Disc Golf players.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matt Salmon",
+      "email": "mattsalmon@hotmail.com"
+    },
+    {
+      "name": "Bobby Hines",
+      "email": "bobbyahines@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "DiscWolf\\": "app/"
+    }
+  },
+  "require": {
+    "php": "^7.4.0",
+    "ext-json": "*"
+  }
+}

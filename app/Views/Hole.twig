@@ -1,0 +1,9 @@
+{% extends '/Layout.twig' %}
+
+{% block title %}Hole {{ data['holeNumber'] }}{% endblock %}
+
+{% block body %}
+    {{ data|json_encode }}
+{% endblock %}
+
+{% block scripts %}{% endblock %}

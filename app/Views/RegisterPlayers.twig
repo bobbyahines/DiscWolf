@@ -1,0 +1,31 @@
+{% extends '/Layout.twig' %}
+
+{% block title %} Disc Wolf {% endblock %}
+
+{% block body %}
+    <section class="section">
+        <form action="/hole/1" method="post" id="player_names" name="player_names">
+            {% for i in 1..data['playerCount'] %}
+                <div class="field">
+                    <label class="label">Player {{ i }}</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Player Name" name="player{{ i }}" id="player{{ i }}">
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="field is-grouped">
+                <input type="hidden" class="input" value="{{ data['playerCount'] }}" name="playerCount" id="playerCount">
+                <input type="hidden" class="input" value="{{ data['playerSkins'] }}" name="playerSkins" id="playerSkins">
+                <input type="hidden" class="input" value="1" name="currentHole" id="currentHole">
+                <div class="control">
+                    <input class="button is-link" type="submit" form="player_names" value="Let's Go!">
+                </div>
+                <div class="control">
+                    <input class="button" type="button" form="player_names" value="Cancel">
+                </div>
+            </div>
+        </form>
+    </section>
+{% endblock %}
+
+{% block scripts %}{% endblock %}

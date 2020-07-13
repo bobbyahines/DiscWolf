@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+
+  discwolf_app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: bobbyahines/discwolf:latest
+    container_name: discwolf_app
+    restart: unless-stopped
+    networks:
+      - frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - TZ=America/Los_Angeles
+
+networks:
+  frontend:
