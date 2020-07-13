@@ -15,3 +15,7 @@ $ docker-compose up -d
 ```
 
 and look to localhost in your browser.
+
+### NOTE
+As it is intended to be a mobile app in the end, test your views on
+your mobile device by going to your server's IP address. 
