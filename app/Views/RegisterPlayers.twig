@@ -4,65 +4,64 @@
 
 {% block body %}
     <section class="section">
-        <form action="/hole/1" method="post" id="player_names" name="player_names">
-            {% for i in 1..data['playerCount'] %}
-                <table class="table is-fullwidth">
-                    <tbody>
-                        <div class="field">
-                            <tr>
-                                <th>
-                                    <label class="label">Player {{ i }}</label>
-                                </th>
-                                <th>
-                                    <label class="label">Wolf Order</label>
-                                </th>
-                                <th>
-                                    <label class="label">Nassau</label>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Player Name" name="player{{ i }}" id="player{{ i }}">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="control">
-                                        <div class="select">
-                                            <select name="wolf_order" id="wolf_order" name="wolf_order"> <!-- form="game_start"> -->
-                                                {% for player_order in 1..data['playerCount'] %}
-                                                    <option>{{ player_order }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="control">
-                                        <div class="select">
-                                            <select name="nassau" id="nassau"> <!-- form="game_start"> -->
-                                                <option value="0.00">Not Today</option>
-                                                <option value="1.00">&#36;1</option>
-                                                <option value="2.00">&#36;2</option>
-                                                <option value="5.00">&#36;5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </div>
-                    </tbody>
-                </table>
-            {% endfor %}
+        <form action="/hole/1" method="post" id="match_setup" name="match_setup">
+            <h1 class=title>Setup Match, suckas</h1>
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>
+                            <p>Player {{ i }} Name</p>
+                        </th>
+                        <th>
+                            <p>Wolf Order</p>
+                        </th>
+                        <th>
+                            <p>Nassau</p>
+                        </th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                {% for i in 1..data['playerCount'] %}
+                    <tr>
+                        <td>
+                            <input class="input" type="text" placeholder="Player {{ i }}" name="player_data[{{ i }}][player_name]" id="player_name">
+                        </td>
+                        <td>
+                            <div class="select">
+                                <select name="player_data[{{ i }}][wolf_order]" id="wolf_order" form="match_setup">
+                                    {% for player_order in 1..data['playerCount'] %}
+                                        <option>{{ player_order }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div></div>
+                        </td>
+                        <td>
+                            <div class="select">
+                                <select name="player_data[{{ i }}][player_nassau]" id="player_nassau" form="match_setup">
+                                    <option value="0.00">Not Today</option>
+                                    <option value="1.00">&#36;1</option>
+                                    <option value="2.00">&#36;2</option>
+                                    <option value="5.00">&#36;5</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
             <div class="field is-grouped">
                 <input type="hidden" class="input" value="{{ data['playerCount'] }}" name="playerCount" id="playerCount">
+                <input type="hidden" class="input" value="{{ data['golfCourse'] }}" name="golfCourse" id="golfCourse">
                 <input type="hidden" class="input" value="{{ data['playerSkins'] }}" name="playerSkins" id="playerSkins">
-                <input type="hidden" class="input" value="1" name="currentHole" id="currentHole">
+                <input type="hidden" class="input" value="1" name="current_hole" id="current_hole">
                 <div class="control">
-                    <input class="button is-link" type="submit" form="player_names" value="Let's Go!">
+                    <input class="button is-success" type="submit" form="match_setup" value="Let's Go!">
                 </div>
                 <div class="control">
-                    <input class="button" type="button" form="player_names" value="Cancel">
+                    <input class="button is-danger" type="button" form="match_setup" value="Cancel">
                 </div>
             </div>
         </form>

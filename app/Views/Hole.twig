@@ -1,9 +1,53 @@
 {% extends '/Layout.twig' %}
 
-{% block title %}Hole {{ data['holeNumber'] }}{% endblock %}
+{% block title %}Hole {{ data['currentHole'] }}{% endblock %}
 
 {% block body %}
+
+<!-- Test making out of tiles -->
+<section>
+    <form action="/hole/{{ data['currentHole'] + 1}}" method="post" id="hole_score" name="hole_score">
+
+    <h1 class="title">{{ data['golfCourse']}}</h1>
+    <table class="table is-fullwidth is-striped">
+        <thead>
+            <tr>
+                <th>
+                    <p>Players</p>
+                </th>
+                {% for hole_num in range(1, 9) %}
+                <th>
+                    <p>{{ hole_num }}</p>
+                </th>
+                {% endfor %}
+                <th>
+                    <p>Total</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in data['player_data'] %}
+            <tr>
+                <th>{{ player['player_name'] }}</th>
+                <td>
+                    <input type="text" name="{{ player['player_hole_score'] }}" id="player_hole_score" form="hole_score">
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="field is-grouped">
+        <input type="hidden" class="input" value="{{ data['playerCount'] }}" name="playerCount" id="playerCount">
+        <input type="hidden" class="input" value="{{ data['golfCourse'] }}" name="golfCourse" id="golfCourse">
+        <input type="hidden" class="input" value="{{ data['playerSkins'] }}" name="playerSkins" id="playerSkins">
+        <input type="hidden" class="input" value="{{ data['player_data'] }}" name="player_data" id="player_data">
+        <input type="hidden" class="input" value="1" name="current_hole" id="current_hole">
+        <div class="control">
+            <input class="button is-success" type="submit" form="hole_score" value="Next Hole!">
+        </div>
+    </div>
     {{ data|json_encode }}
+</section>
 {% endblock %}
 
 {% block scripts %}{% endblock %}
