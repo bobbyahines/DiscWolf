@@ -8,10 +8,16 @@ PHP project.
 
 ## Getting Started
 
-To work on this stack,
+To work on this stack, first bring it up with:
 
 ```bash
 $ docker-compose up -d
+```
+
+Then, install the dependencies with:
+
+```bash
+$ docker exec -it discwolf_app composer install
 ```
 
 and look to localhost in your browser.
