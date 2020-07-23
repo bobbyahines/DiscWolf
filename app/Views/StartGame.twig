@@ -1,0 +1,62 @@
+{% extends '/Layout.twig' %}
+
+{% block title %} Disc Wolf {% endblock %}
+
+{% block body %}
+    <section class="section">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Skins Settings</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ data.gameFile.playerSkins }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+            <tr>
+                <th colspan="2">Match Settings</th>
+            </tr>
+            <tr>
+                <th>Course Name</th>
+                <th>Holes</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ data.gameFile.courseName }}</td>
+                <td>{{ data.gameFile.holeCount }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+            <tr>
+                <th colspan="3">Player Settings</th>
+            </tr>
+            <tr>
+                <th>Order</th>
+                <th>Player</th>
+                <th>Nassau</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for player in data.gameFile.players %}
+            <tr>
+                <td>{{ player.order }}</td>
+                <td>{{ player.name }}</td>
+                <td>${{ player.nassau }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="/hole/1" class="button" style="background-color:#500000; color: white">Let's GO!</a>
+
+    </section>
+{% endblock %}
+
+{% block scripts %}{% endblock %}

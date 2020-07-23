@@ -4,26 +4,63 @@
 
 {% block body %}
     <section class="section">
-        <form action="/hole/1" method="post" id="player_names" name="player_names">
-            {% for i in 1..data['playerCount'] %}
-                <div class="field">
-                    <label class="label">Player {{ i }}</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Player Name" name="player{{ i }}" id="player{{ i }}">
-                    </div>
-                </div>
-            {% endfor %}
-            <div class="field is-grouped">
-                <input type="hidden" class="input" value="{{ data['playerCount'] }}" name="playerCount" id="playerCount">
-                <input type="hidden" class="input" value="{{ data['playerSkins'] }}" name="playerSkins" id="playerSkins">
-                <input type="hidden" class="input" value="1" name="currentHole" id="currentHole">
-                <div class="control">
-                    <input class="button is-link" type="submit" form="player_names" value="Let's Go!">
-                </div>
-                <div class="control">
-                    <input class="button" type="button" form="player_names" value="Cancel">
-                </div>
-            </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>{{ data.courseName }}: {{ data.holeCount }} Holes @ ${{ data.playerSkins }}ea</th>
+            </tr>
+            </thead>
+        </table>
+        <form action="/startGame" method="post" id="player_names" name="player_names">
+            <table class="table">
+                <thead></thead>
+                <tbody>
+                {% for i in 1..data['playerCount'] %}
+                <tr>
+                    <td>
+                        <div class="field">
+                            <label class="label">Player {{ i }}</label>
+                            <div class="control">
+{#                                <input class="input" type="text" placeholder="Player Name" name="player{{ i }}" id="player{{ i }}" value="Player {{ i }}" form="player_names">#}
+                                <input class="input" type="text" placeholder="Player Name" name="player{{ i }}" id="player{{ i }}" form="player_names">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field">
+                            <label class="label">Nassau?</label>
+                            <div class="select">
+                                <select name="player{{ i }}nassau" id="player{{ i }}nassau" form="player_names">
+                                    <option value="0.00" selected>No</option>
+                                    <option value="1.00">&#36;1</option>
+                                    <option value="2.00">&#36;2</option>
+                                    <option value="5.00">&#36;5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2">
+                        <div class="field is-grouped">
+                            <input type="hidden" class="input" value="{{ data.playerCount }}" name="playerCount" id="playerCount" form="player_names">
+                            <input type="hidden" class="input" value="{{ data.playerSkins }}" name="playerSkins" id="playerSkins" form="player_names">
+                            <input type="hidden" class="input" value="{{ data.courseName }}" name="courseName" id="courseName" form="player_names">
+                            <input type="hidden" class="input" value="{{ data.holeCount }}" name="holeCount" id="holeCount" form="player_names">
+                            <input type="hidden" class="input" value="{{ data.playerTerms }}" name="playerTerms" id="playerTerms" form="player_names">
+                            <div class="control">
+                                <input class="button is-link" type="submit" form="player_names" value="Ready?">
+                            </div>
+                            <div class="control">
+                                <input class="button" type="button" form="player_names" value="Cancel">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
         </form>
     </section>
 {% endblock %}

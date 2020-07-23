@@ -1,9 +1,71 @@
 {% extends '/Layout.twig' %}
 
-{% block title %}Hole {{ data['holeNumber'] }}{% endblock %}
+{% block title %}Hole {{ data.holeNumber }}{% endblock %}
 
 {% block body %}
-    {{ data|json_encode }}
+    <section class="section">
+{# TODO: This form is recycling the same field names and ids for every row. That needs fixin' and the dynamic url.  #}
+{#        <form action="/hole/{% data.holeNumber + 1 %}" name="scoring_form">#}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th colspan="4">Hole {{ data.currentHole }}</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Player</td>
+                    <td>Position</td>
+                    <td>Score</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for player in data.gameFile.players %}
+                    <tr>
+                        {% if player.order == data.wolfPlayer %}
+                            <td style="color: #500000">W</td>
+                        {% else %}
+                            <td>{{ player.order }}</td>
+                        {% endif %}
+                        <td>{{ player.name }}</td>
+                        <td>
+                            <div class="select">
+                                <select name="position" id="position" form="scoring_form">
+                                    {% if player.order == data.wolfPlayer %}
+                                        <option value=""></option>
+                                        <option value="W" selected>W</option>
+                                    {% else %}
+                                        <option value="" selected></option>
+                                        <option value="W">W</option>
+                                    {% endif %}
+                                    <option value="L">L</option>
+                                    <option value="P">P</option>
+                                    <option value="Y">Y</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="select">
+                                <select name="score" id="score" class="select" form="scoring_form">
+                                    <option value="-5">-5</option>
+                                    <option value="-4">-4</option>
+                                    <option value="-3">-3</option>
+                                    <option value="-2">-2</option>
+                                    <option value="-1">-1</option>
+                                    <option value="0" selected>0</option>
+                                    <option value="+1">+1</option>
+                                    <option value="+2">+2</option>
+                                    <option value="+3">+3</option>
+                                    <option value="+4">+4</option>
+                                    <option value="+5">+5</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+{#        </form>#}
+    </section>
 {% endblock %}
 
 {% block scripts %}{% endblock %}

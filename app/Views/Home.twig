@@ -4,7 +4,7 @@
 
 {% block body %}
     <section class="section">
-        <form action="/registerPlayers" method="post" id="game_start">
+        <form action="/registerPlayers" method="post" id="game_setup">
             <table class="table is-fullwidth">
                 <tbody>
                 <tr>
@@ -13,8 +13,8 @@
                             <label class="label is-large">Players</label>
                             <div class="control">
                                 <div class="select">
-                                    <select name="player_count" id="player_count" name="player_count" form="game_start">
-                                        {% for i in 3..9 %}
+                                    <select name="playerCount" id="playerCount"form="game_setup">
+                                        {% for i in 4..9 %}
                                             <option>{{ i }}</option>
                                         {% endfor %}
                                     </select>
@@ -28,7 +28,7 @@
                             <label class="label is-large">Skins</label>
                             <div class="control">
                                 <div class="select">
-                                    <select name="player_skins" id="player_skins" form="game_start">
+                                    <select name="playerSkins" id="playerSkins" form="game_setup">
                                         <option value="0.01">1&#162;</option>
                                         <option value="0.05">5&#162;</option>
                                         <option value="0.10">10&#162;</option>
@@ -46,11 +46,41 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        <div class="field">
+                            <label class="label is-large">Course</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select name="courseName" id="courseName" form="game_setup">
+                                        <option value="Baker" selected>Baker</option>
+                                        <option value="Flanacher">Flanacher</option>
+                                        <option value="Highland - Gold">Highland - Gold</option>
+                                        <option value="Highland - Purple">Highland - Purple</option>
+                                        <option value="Scotlandville">Scotlandville</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field">
+                            <label class="label is-large">Holes</label>
+                            <div class="select">
+                                <select name="holeCount" id="holeCount" form="game_setup">
+                                    <option value="3">3</option>
+                                    <option value="9" selected>9</option>
+                                    <option value="18">18</option>
+                                </select>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         <div class="field">
                             <div class="control">
                                 <label class="checkbox">
-                                    <input type="checkbox" id="player_terms" name="player_terms" form="game_start">
+                                    <input type="checkbox" id="playerTerms" name="playerTerms" form="game_setup">
                                     I agree to the <a href="#">terms and conditions</a>
                                 </label>
                             </div>
@@ -62,8 +92,7 @@
                         <div class="field">
                             <div class="control">
                                 <br>
-                                <input class="button is-link" type="submit" form="game_start" value="Select Players">
-{#                                <button class="button is-link" form="registerPlayer">Select Players</button>#}
+                                <input class="button is-link" type="submit" form="game_setup" value="Select Players">
                             </div>
                         </div>
                     </td>
