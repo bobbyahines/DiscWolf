@@ -1,0 +1,9 @@
+#####################################
+##  SERVE STAGE  ####################
+#####################################
+FROM conflabs/php:7.4-apache
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+ENV APACHE_LOG_DIR /var/www/html/logs
+
+# Install composer and put binary into $PATH
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
