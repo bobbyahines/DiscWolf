@@ -11,11 +11,12 @@ use PHPUnit\Framework\TestCase;
 
 class GameTest extends TestCase
 {
+
     public function testClassIsInstanceOfGameModel(): void
     {
         $game = new Game();
 
-        $this->assertInstanceOf('Discwolf\Models\Game', $game);
+        $this->assertInstanceOf('DiscWolf\Models\Game', $game);
     }
 
     public function testDefaultConstructionOfGameModel(): void
