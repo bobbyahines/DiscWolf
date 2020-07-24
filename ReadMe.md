@@ -66,6 +66,23 @@ bother testing private methods/attributes/properties. The concept being,
 if something in a private method is messed up in a meaningful way, it will
 show up as an error in the interface that ultimately relies on that method.
 
+#### So, when do we write tests? BDD/TDD
+
+Test Driven Design (sometimes called Behavior D. D.) says you write the tests 
+before writing the feature. The workflow is something like,  
+
+1. As a user, I want a utility class that does common math for my app.  
+2. I create a unit test class called MathTest.php.  
+3. I create a test asserting that the class exists.   
+4. I run the test and see that it fails. It fails because I didn't write
+the class yet.  
+5. I write the class stub with namespace.   
+6. I run the test again and it passes.  
+and on and on and on.... 
+
+There has to be a balance, and you have to figure out how much TDD you want,
+or have time/money for.
+
 #### Running The Tests
 
 ```bash
