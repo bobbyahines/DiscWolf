@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace DiscWolf\Models;
 
 
-use Ramsey\Uuid\Rfc4122\UuidV4;
 use Ramsey\Uuid\Uuid;
 
 class Player
@@ -14,6 +13,10 @@ class Player
     public string $name;
     public float $nassau;
 
+    /**
+     * Player constructor.
+     * @param array $playerData
+     */
     public function __construct($playerData = [])
     {
         $this->uuid = $playerData['uuid'] ?: Uuid::uuid4()->toString();

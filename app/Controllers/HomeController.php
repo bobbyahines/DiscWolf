@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+
 namespace DiscWolf\Controllers;
 
 
@@ -10,6 +11,15 @@ use DiscWolf\Utils\GameState;
 
 class HomeController extends Controller
 {
+    /**
+     * HOME LANDING PAGE
+     *
+     * This method renders the landing home page; the very first the users see.
+     *
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function index(): void
     {
         $template = $this->twig->load('/Home.twig');
@@ -17,6 +27,14 @@ class HomeController extends Controller
         echo $template->render();
     }
 
+    /**
+     * Takes in the form data from the player registry and returns a Player model object.
+     *
+     * @param int $id
+     * @param string $name
+     * @param float $nassau
+     * @return Player
+     */
     private function makePlayer(int $id, string $name, float $nassau): Player
     {
         return new Player([
@@ -26,6 +44,13 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * Renders the form for registering the players.
+     *
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function registerPlayers(): void
     {
         $args = func_get_arg(1);
@@ -45,6 +70,13 @@ class HomeController extends Controller
         echo $template->render($params);
     }
 
+    /**
+     * Renders the game setup verification page.
+     *
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function startGame(): void
     {
         $args = func_get_arg(1);

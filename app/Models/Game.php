@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace DiscWolf\Models;
 
 
-use Ramsey\Uuid\Rfc4122\UuidV4;
 use Ramsey\Uuid\Uuid;
+
 
 class Game
 {
@@ -19,6 +19,10 @@ class Game
     public int $startTimeStamp;
     public ?int $endTimeStamp;
 
+    /**
+     * Game constructor.
+     * @param array $gameData
+     */
     public function __construct($gameData = [])
     {
         $this->uuid = $gameData['uuid'] ?: Uuid::uuid4()->toString();
@@ -32,6 +36,10 @@ class Game
         $this->endTimeStamp = $gameData['endTimeStamp'] ?: 0;
     }
 
+    /**
+     * Returns a Unix time stamp.
+     * @return int
+     */
     private function getTimeStamp(): int
     {
         $date = new \DateTime();
@@ -41,6 +49,9 @@ class Game
         return $timeStamp;
     }
 
+    /**
+     * Sets the class property $endTimeStamp
+     */
     public function endTimeStamp(): void
     {
         $this->endTimeStamp = $this->getTimeStamp();
