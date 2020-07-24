@@ -15,7 +15,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "DiscWolf\\": "app/"
+      "DiscWolf\\": "app/",
+      "Tests\\": "tests/"
     }
   },
   "require": {
