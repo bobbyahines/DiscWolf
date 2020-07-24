@@ -9,7 +9,7 @@ use DiscWolf\Models\Game;
 use DiscWolf\Models\Player;
 use DiscWolf\Utils\GameState;
 
-class HomeController extends Controller
+final class HomeController extends Controller
 {
     /**
      * HOME LANDING PAGE

@@ -6,7 +6,7 @@ namespace DiscWolf\Models;
 
 use Ramsey\Uuid\Uuid;
 
-class Hole
+final class Hole
 {
     public string $uuid;
     public int $number;

@@ -7,7 +7,7 @@ namespace DiscWolf\Controllers;
 use DiscWolf\Utils\GameState;
 use DiscWolf\Utils\WhoIsTheWolf;
 
-class HoleController extends Controller
+final class HoleController extends Controller
 {
     /**
      * Retrieves the game file id variable from the Global Session array.

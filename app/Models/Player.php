@@ -6,7 +6,7 @@ namespace DiscWolf\Models;
 
 use Ramsey\Uuid\Uuid;
 
-class Player
+final class Player
 {
     public string $uuid;
     public int $order;

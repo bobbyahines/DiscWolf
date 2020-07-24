@@ -7,7 +7,7 @@ namespace DiscWolf\Models;
 use Ramsey\Uuid\Uuid;
 
 
-class Game
+final class Game
 {
     public string $uuid;
     public int $playerCount;
