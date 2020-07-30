@@ -12,9 +12,9 @@ An open source "Wolf" game-mode tracker for up to 9 players.
 | &#9745;   | Establish project scaffolding | |
 | &#9745;   | Establish server environment  | Docker |
 | &#9745;   | Set up unit testing.          | PHPUnit |
-| &#9744;   |  |  |
-| &#9744;   |  |  |
-| &#9744;   |  |  |
+| &#9744;   | Work out the hole save logic  |  |
+| &#9744;   | Write the game mechanix lib   |  |
+| &#9744;   | Create the final score page   |  |
 
 ## Getting Started
 
