@@ -4,67 +4,91 @@
 
 {% block body %}
     <section class="section">
-{# TODO: This form is recycling the same field names and ids for every row. That needs fixin' and the dynamic url.  #}
-{#        <form action="/hole/{% data.holeNumber + 1 %}" name="scoring_form">#}
-            <table class="table">
-                <thead>
-                <tr>
-                    <th colspan="4">Hole {{ data.currentHole }}</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Player</td>
-                    <td>Position</td>
-                    <td>Score</td>
-                </tr>
-                </thead>
-                <tbody>
+        <table class="table">
+            <thead>
+            <tr>
+                <th colspan="4">Hole {{ data.currentHole }} / {{ data.gameFile.holeCount }}</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Player</td>
+                <td>Position</td>
+                <td>Score</td>
+            </tr>
+            </thead>
+            <tbody>
+                {% if data.currentHole < data.gameFile.holeCount %}
+                    <form action="/hole/{{ data.currentHole + 1 }}" method="POST" name="scoring_form" id="scoring_form">
+                {% else %}
+                    <form action="/scoreRound" method="POST" name="scoring_form" id="scoring_form">
+                {% endif %}
+
                 {% for player in data.gameFile.players %}
                     <tr>
-                        {% if player.order == data.wolfPlayer %}
-                            <td style="color: #500000">W</td>
-                        {% else %}
-                            <td>{{ player.order }}</td>
-                        {% endif %}
+                        <td>
+                                    {{ player.order }}
+                                    <input type="hidden" name="player{{ player.order }}order"
+                                           id="player{{ player.order }}order" form="scoring_form"
+                                           value="{{ player.order }}">
+                        </td>
                         <td>{{ player.name }}</td>
                         <td>
                             <div class="select">
-                                <select name="position" id="position" form="scoring_form">
-                                    {% if player.order == data.wolfPlayer %}
-                                        <option value=""></option>
-                                        <option value="W" selected>W</option>
-                                    {% else %}
-                                        <option value="" selected></option>
-                                        <option value="W">W</option>
-                                    {% endif %}
+                                <select name="position{{ player.order }}" id="position{{ player.order }}"
+                                                form="scoring_form">
+                                {% if player.order == data.wolfPlayer %}
+                                    <option value=""></option>
+                                    <option value="W" selected>W</option>
                                     <option value="L">L</option>
+                                {% else %}
+                                    <option value="" selected></option>
                                     <option value="P">P</option>
                                     <option value="Y">Y</option>
+                                {% endif %}
                                 </select>
                             </div>
                         </td>
                         <td>
                             <div class="select">
-                                <select name="score" id="score" class="select" form="scoring_form">
+                                <select name="score{{ player.order }}" id="score{{ player.order }}" class="select"
+                                                form="scoring_form">
                                     <option value="-5">-5</option>
                                     <option value="-4">-4</option>
                                     <option value="-3">-3</option>
                                     <option value="-2">-2</option>
                                     <option value="-1">-1</option>
                                     <option value="0" selected>0</option>
-                                    <option value="+1">+1</option>
-                                    <option value="+2">+2</option>
-                                    <option value="+3">+3</option>
-                                    <option value="+4">+4</option>
-                                    <option value="+5">+5</option>
+                                    <option value="1">+1</option>
+                                    <option value="2">+2</option>
+                                    <option value="3">+3</option>
+                                    <option value="4">+4</option>
+                                    <option value="5">+5</option>
                                 </select>
                             </div>
                         </td>
                     </tr>
                 {% endfor %}
-                </tbody>
-            </table>
-{#        </form>#}
+                <tr>
+                    <th colspan="2">
+                        <input type="hidden" id="holeNumber" name="holeNumber" form="scoring_form" value="{{ data.currentHole }}">
+                    </th>
+
+                    {% if data.currentHole < data.gameFile.holeCount %}
+                        <th colspan="2" style="text-align: right;">
+                            <input type="submit" class="button" style="background-color: #500000;color: white;" name="submit" value="&rarrtl;" form="scoring_form">
+                            {# <a href="/hole/{{ data.currentHole + 1 }}" class="button" style="background-color: #500000;color: white;">&rarrtl;</a>#}
+                        </th>
+                    {% else %}
+                        <th colspan="2" style="text-align: right;">
+                            <input type="submit" class="button" style="background-color: #500000;color: white;"
+                                           name="submit" value="Score Round!" form="scoring_form">
+                                    {# <a href="/scoreRound" class="button" style="background-color: #500000;color: white;">Score Round!</a>#}
+                        </th>
+                    {% endif %}
+                </tr>
+                </form>
+            </tbody>
+        </table>
     </section>
 {% endblock %}
 

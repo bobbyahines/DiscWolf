@@ -54,7 +54,9 @@
             {% endfor %}
             </tbody>
         </table>
-        <a href="/hole/1" class="button" style="background-color:#500000; color: white">Let's GO!</a>
+        <form action="/hole/1" method="post">
+            <input type="submit" class="button" style="background-color:#500000; color: white;" value="Let's GO!">
+        </form>
 
     </section>
 {% endblock %}
