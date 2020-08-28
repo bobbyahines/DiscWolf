@@ -1,0 +1,84 @@
+{
+    "uuid": "c535f1f1-4395-4723-a767-bbc28dc5ade9",
+    "playerCount": 4,
+    "playerSkins": 0.25,
+    "courseName": "Baker",
+    "holeCount": 9,
+    "players": [
+        {
+            "uuid": "cc3d4c65-5050-4099-8a22-3a2a6c55b658",
+            "order": 1,
+            "name": "asdff",
+            "nassau": 0,
+            "hole_scores": [],
+            "total_score": -99,
+            "wolf_team": [],
+            "total_skins": 0
+        },
+        {
+            "uuid": "46e9f79f-8a17-40b5-a6dd-180881bc9369",
+            "order": 2,
+            "name": "asdf",
+            "nassau": 0,
+            "hole_scores": [],
+            "total_score": -99,
+            "wolf_team": [],
+            "total_skins": 0
+        },
+        {
+            "uuid": "23d7c29d-f17f-4acd-88b6-baea5da2c933",
+            "order": 3,
+            "name": "asdf",
+            "nassau": 0,
+            "hole_scores": [],
+            "total_score": -99,
+            "wolf_team": [],
+            "total_skins": 0
+        },
+        {
+            "uuid": "3ddc2359-21ca-4e3c-bac8-b8cc976a8277",
+            "order": 4,
+            "name": "asdf",
+            "nassau": 0,
+            "hole_scores": [],
+            "total_score": -99,
+            "wolf_team": [],
+            "total_skins": 0
+        }
+    ],
+    "holes": [
+        {
+            "uuid": "90bddb95-1ee4-4d71-b65f-f233ac2ea5f5",
+            "number": 1,
+            "skins_to_win": 1,
+            "scores": [
+                {
+                    "uuid": "751c4c48-76aa-4d3a-82a0-633b342464e1",
+                    "playerOrder": 1,
+                    "position": "W",
+                    "score": -3
+                },
+                {
+                    "uuid": "84ef201d-ceb3-4557-93f1-b5e128b4fd6c",
+                    "playerOrder": 2,
+                    "position": "Y",
+                    "score": 2
+                },
+                {
+                    "uuid": "ceddc605-690e-494a-b424-5f7017316953",
+                    "playerOrder": 3,
+                    "position": "P",
+                    "score": -3
+                },
+                {
+                    "uuid": "a01bb55d-d9a7-4651-8163-bb70f71a0d20",
+                    "playerOrder": 4,
+                    "position": "Y",
+                    "score": -2
+                }
+            ]
+        }
+    ],
+    "startTimeStamp": 1597366037,
+    "endTimeStamp": 0
+}

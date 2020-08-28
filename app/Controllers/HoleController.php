@@ -9,10 +9,10 @@ use DiscWolf\Models\Hole;
 use DiscWolf\Models\Score;
 use DiscWolf\Utils\GameState;
 use DiscWolf\Utils\WhoIsTheWolf;
+use DiscWolf\Utils\GameLogic;
 
 final class HoleController extends Controller
 {
-
     /**
      * Loads the current session game file.
      *
@@ -122,12 +122,18 @@ final class HoleController extends Controller
         //Create a new Hole out of the existing args.
         $args = func_get_arg(1);
         if (count($args) > 1) {
+
+            // MOOSE added game logic.
+            $gameLogic = new GameLogic();
+            $game = $gameLogic->updatePlayers($args, $game);
+
             $newHole = $this->newHoleMaker($args, $game->playerCount);
         }
 
         if ($newHole) {
             $newHoles = $this->integrateNewHole($newHole, $game->holes);
         }
+
 
         if ($newHoles) {
             $game->holes = $newHoles;

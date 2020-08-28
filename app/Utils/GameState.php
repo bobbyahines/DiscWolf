@@ -36,11 +36,12 @@ final class GameState
 
     /**
      * Takes in the array'ed json file and returns its contents as a complete Game model object.
+     * Public for GameLogicTest.
      *
      * @param array $contents
      * @return Game
      */
-    private function createGameObjects(array $contents): Game
+    public function createGameObjects(array $contents): Game
     {
         $game = new Game([
             'uuid' => $contents['uuid'],
