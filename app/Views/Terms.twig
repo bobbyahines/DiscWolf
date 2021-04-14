@@ -1,0 +1,38 @@
+{% extends '/Layout.twig' %}
+
+{% block title %} DiscWolf {% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>Terms of Play:</h1>
+        <p>
+            This is a skins match, using the <i>Wolf</i> variation ruleset. <br>
+            There are {{ data.playersCount }} players competing for {{ data.skinsAmount }} per hole for a total of {{ data.holesCount }} holes.
+        </p>
+        <p>
+            The line up is as follows:
+        </p>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Player</th>
+                <th>Nassau $</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for player in data.players %}
+            <tr>
+                <td>{{ player.name }}</td>
+                <td>${{ player.nassau }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <form action="/hole/1" method="post" id="startGame" name="startGame">
+            <input type="submit" name="button1" id="button1" value="Agreed!" form="startGame">
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}{% endblock %}

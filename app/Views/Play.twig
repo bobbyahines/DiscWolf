@@ -1,0 +1,77 @@
+{% extends '/Layout.twig' %}
+
+{% block title %} DiscWolf {% endblock %}
+
+{% block body %}
+    <div class="content">
+        <form action="/registerPlayers" method="post" id="game_setup">
+            <table>
+                <tbody></tbody>
+                <tbody>
+                <tr>
+                    <td>
+                        <label for="playersCount">No. of Players</label>
+                        <select name="playersCount" id="playersCount" form="game_setup">
+                            {% for i in 4..9 %}
+                                <option>{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="skinsAmount">Skins Amount</label>
+                        <select name="skinsAmount" id="skinsAmount" form="game_setup">
+                            <option value="0.01">1&#162;</option>
+                            <option value="0.05">5&#162;</option>
+                            <option value="0.10">10&#162;</option>
+                            <option value="0.25" selected>25&#162;</option>
+                            <option value="0.50">50&#162;</option>
+                            <option value="0.75">75&#162;</option>
+                            <option value="1.00">&#36;1</option>
+                            <option value="2.00">&#36;2</option>
+                            <option value="5.00">&#36;5</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="courseName">Course Name</label>
+                        <select name="courseName" id="courseName" form="game_setup">
+                            <option value="Baker" selected>Baker</option>
+                            <option value="Flanacher">Flanacher</option>
+                            <option value="Highland - Gold">Highland - Gold</option>
+                            <option value="Highland - Purple">Highland - Purple</option>
+                            <option value="Scotlandville">Scotlandville</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="holesCount">No. of Holes</label>
+                        <select name="holesCount" id="holesCount" form="game_setup">
+                            <option value="3">3</option>
+                            <option value="9" selected>9</option>
+                            <option value="18">18</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" id="playerTerms" name="playerTerms" form="game_setup">
+                                I agree to the <a href="#">terms and conditions</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <br>
+                        <input class="button is-link" type="submit" form="game_setup" value="Register Players">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}{% endblock %}

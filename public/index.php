@@ -7,9 +7,13 @@ session_start();
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', '\DiscWolf\Controllers\HomeController/index');
-    $r->addRoute('POST', '/registerPlayers', '\DiscWolf\Controllers\HomeController/registerPlayers');
-    $r->addRoute('POST', '/startGame', '\DiscWolf\Controllers\HomeController/startGame');
-    $r->addRoute('POST', '/hole/{id:\d+}', '\DiscWolf\Controllers\HoleController/index');
+    $r->addRoute('GET', '/play', '\DiscWolf\Controllers\HomeController/play');
+    $r->addRoute('GET', '/rules', '\DiscWolf\Controllers\HomeController/rules');
+    $r->addRoute('GET', '/about', '\DiscWolf\Controllers\HomeController/about');
+    $r->addRoute('POST', '/registerPlayers', '\DiscWolf\Controllers\SetupController/register');
+    $r->addRoute('POST', '/terms', '\DiscWolf\Controllers\SetupController/terms');
+    $r->addRoute('POST', '/hole/{id:\d+}', '\DiscWolf\Controllers\GameController/index');
+    $r->addRoute('POST', '/score', '\DiscWolf\Controllers\FinalScoreController/index');
     $r->addRoute('GET', '/test', '\DiscWolf\Controllers\Controller/test');
 });
 

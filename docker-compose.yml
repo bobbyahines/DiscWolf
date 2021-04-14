@@ -5,7 +5,7 @@ services:
   discwolf_app:
     build:
       context: ./
-      dockerfile: Dockerfile-Dev
+      dockerfile: Dockerfile.Dev
     image: bobbyahines/discwolf:latest
     container_name: discwolf_app
     restart: unless-stopped
