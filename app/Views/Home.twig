@@ -1,0 +1,36 @@
+{% extends '/Layout.twig' %}
+
+{% block title %} DiscWolf {% endblock %}
+
+{% block body %}
+    <div class="content">
+        <table>
+            <thead></thead>
+            <tbody>
+            <tr>
+                <td>
+                    <a href="/play">
+                        <button type="button">PLAY</button>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/rules">
+                        <button type="button">RULES</button>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="/about">
+                        <button type="button">ABOUT</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block scripts %}{% endblock %}

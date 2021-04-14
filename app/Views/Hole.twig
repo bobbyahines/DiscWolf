@@ -1,0 +1,83 @@
+{% extends '/Layout.twig' %}
+
+{% block title %} DiscWolf {% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>Hole No. {{ data.currentHole }}</h1>
+        <h3>Current Skins Pot: ${{ data.currentPot }}</h3>
+        <br>
+        {% if data.currentHole == data.holesCount  %}
+        <form action="/score" method="post" id="holeScore" name="holeScore">
+        {% else %}
+        <form action="/hole/{{ data.currentHole + 1 }}" method="post" id="holeScore" name="holeScore">
+        {% endif %}
+            <input type="hidden" name="hole" id="hole" value="{{ data.currentHole }}">
+            <input type="hidden" name="pot" id="pot" value="{{ data.currentPot }}">
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Player</th>
+                <th>$N</th>
+                <th>Position</th>
+                {% for i in 1..data.holesCount %}
+                    <th>{{ i }}</th>
+                {% endfor %}
+                <th>Total</th>
+                <th>Skins</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for player in data.players %}
+                <tr>
+                    <td>
+                        {{ player.name }}
+                    </td>
+                    <td>${{ player.nassau }}</td>
+                    <td>
+                        <select name="position{{ player.id }}" id="position{{ player.id }}" form="holeScore">
+                            <option value="w">Wolf</option>
+                            <option value="p">Pack</option>
+                            <option value="s" selected>Sheep</option>
+                        </select>
+                    </td>
+                    {% for i in 1..data.holesCount %}
+                        {% if i < data.currentHole %}
+                            <th style="background-color: lightgray">{{ player.scores[i-1].score }}{{ player.scores[i-1].position }}</th>
+                        {% elseif i == data.currentHole %}
+                            <td bgcolor="#f4a460">
+                                <select name="strokes{{ player.id }}" id="strokes{{ player.id }}" form="holeScore">
+                                    <option value="7">+7</option>
+                                    <option value="6">+6</option>
+                                    <option value="5">+5</option>
+                                    <option value="4">+4</option>
+                                    <option value="3">+3</option>
+                                    <option value="2">+2</option>
+                                    <option value="1">+1</option>
+                                    <option value="0" selected>Par</option>
+                                    <option value="-1">-1</option>
+                                    <option value="-2">-2</option>
+                                    <option value="-3">-3</option>
+                                    <option value="-4">-4</option>
+                                    <option value="-5">-5</option>
+                                    <option value="-6">-6</option>
+                                    <option value="-7">-7</option>
+                                </select>
+                            </td>
+                        {% else %}
+                            <td>__</td>
+                        {% endif %}
+                    {% endfor %}
+                    <th>{{ playerTotals[player.id].points }}</th><!-- Total -->
+                    <th>{{ playerTotals[player.id].skins }}</th><!-- Skins -->
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+            <br>
+            <input type="submit" value="Submit" form="holeScore">
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}{% endblock %}
