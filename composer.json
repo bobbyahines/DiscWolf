@@ -20,7 +20,7 @@
     }
   },
   "require": {
-    "php": "^7.4.0",
+    "php": "^8",
     "ext-json": "*",
     "ramsey/uuid": "^4.0",
     "illuminate/support": "^7.21",
