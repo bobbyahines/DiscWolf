@@ -9,7 +9,7 @@ RUN composer install
 #####################################
 ##  SERVE STAGE  ####################
 #####################################
-FROM library/php:8.0-apache
+FROM library/php:7.4-apache
 LABEL maintainer="Bobby Hines <bobbyahines@gmail.com>"
 LABEL image='bobbyahines/discwolf:prod'
 
